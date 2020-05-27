@@ -41,10 +41,16 @@ string Input::input_number(string input_phrase) {
 	do{
 		cout << input_phrase;
 		getline(cin, aux);
-		if (!verify_number(aux)) {
+		try {
+			if (!verify_number(aux)) {
+				throw 1;
+			}
+			break;
+		}
+		catch (int e) {
 			cout << "Error... No es un numero" << endl;
 		}
-	} while (!verify_number(aux));
+	} while (true);
 	return aux;
 }
 
